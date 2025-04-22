@@ -1,0 +1,16 @@
+[tools]
+python = ["3.11.10", "3.9.20"]
+node = ["16.17.0"]
+lua = ["5.1"]
+uv = ["latest"]
+
+# Set environment variables
+[env]
+# Set preferred versions
+PYTHON_VERSION = "3.9.20"
+NODE_VERSION = "16.17.0"
+LUA_VERSION = "5.1"
+
+# Global packages will be installed when running "mise install"
+# No special section needed in latest mise versions
+

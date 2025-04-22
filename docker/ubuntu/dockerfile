@@ -1,0 +1,57 @@
+# Base image
+FROM ubuntu:22.04
+
+# Set environment variables
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Etc/UTC
+
+# Update and install basic tools
+RUN apt-get update && apt-get install -y \
+    sudo \
+    git \
+    curl \
+    wget \
+    zsh \
+    tmux \
+    build-essential \
+    locales \
+    tzdata \
+    software-properties-common \
+    ca-certificates \
+    libreadline-dev \
+    libncurses-dev
+
+# Set up locale
+RUN locale-gen en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
+
+# Install Neovim
+RUN add-apt-repository ppa:neovim-ppa/unstable && \
+    apt-get update && apt-get install -y neovim
+
+# Install Mise
+RUN curl -fsSL https://mise.jdx.dev/install.sh | bash
+
+# Add Mise to PATH
+ENV PATH="/root/.local/bin:${PATH}"
+
+# Copy dotfiles
+COPY dotfiles/ /root/
+
+# Set up zsh as default shell
+RUN chsh -s $(which zsh)
+
+# Install tmux plugin manager (optional)
+RUN git clone https://github.com/tmux-plugins/tpm /root/.tmux/plugins/tpm
+
+# Setup mise initialization in shell
+RUN echo 'eval "$(mise activate zsh)"' >> /root/.zshrc && \
+    echo 'echo "Run mise install to install languages configured in ~/.config/mise/config.toml"' >> /root/.zshrc
+
+# Set working directory
+WORKDIR /root
+
+# Entry point
+CMD [ "zsh" ]

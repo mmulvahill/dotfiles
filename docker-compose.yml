@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  dev-env-ubuntu:
+    build:
+      context: .
+      dockerfile: docker/ubuntu/Dockerfile
+    volumes:
+      - ~/.aws:/root/.aws
+    tty: true
+
+  dev-env-amazon:
+    build:
+      context: .
+      dockerfile: docker/amazon-linux/Dockerfile
+    volumes:
+      - ~/.aws:/root/.aws
+    tty: true
