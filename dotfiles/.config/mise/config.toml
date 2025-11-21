@@ -1,6 +1,6 @@
 [tools]
 python = ["3.11.10", "3.9.20"]
-node = ["16.17.0"]
+node = "23"
 lua = ["5.1"]
 uv = ["latest"]
 

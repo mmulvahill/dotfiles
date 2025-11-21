@@ -109,12 +109,13 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-eval "$(~/.local/bin/mise activate zsh)"
+eval "$(/usr/bin/mise activate zsh)"
 # Uncomment to manually activate a specific version of rust
 # . "$HOME/.local/share/mise/installs/rust/1.76.0/env"
 
 # Load optional configuration files
-[ -f ~/.openai ] && source ~/.openai
-[ -f ~/.serper ] && source ~/.serper
+# [ -f ~/.openai ] && source ~/.openai
+# [ -f ~/.serper ] && source ~/.serper
 [ -f ~/.config/shell/aliases.sh ] && source ~/.config/shell/aliases.sh
+[ -f ~/.config/shell/secrets.sh ] && source ~/.config/shell/secrets.sh
 

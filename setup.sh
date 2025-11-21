@@ -145,10 +145,11 @@ setup_ubuntu() {
             libncurses-dev \
             unzip
         
+        # TODO: change this to install from source (clone to ~/src)
         # Install Neovim
-        sudo add-apt-repository -y ppa:neovim-ppa/stable
-        sudo apt-get update
-        sudo apt-get install -y neovim
+        # sudo add-apt-repository -y ppa:neovim-ppa/stable
+        # sudo apt-get update
+        # sudo apt-get install -y neovim
     fi
     
     # Generate locale
@@ -189,7 +190,8 @@ setup_amazon_linux() {
         
         # Install EPEL and Vim
         sudo amazon-linux-extras install -y epel
-        sudo yum install -y vim
+        # TODO: change this to install neovim from source (clone to ~/src)
+        # sudo yum install -y vim
     fi
 }
 
@@ -217,9 +219,10 @@ setup_macos() {
             wget \
             zsh \
             tmux \
-            neovim \
             readline \
             ncurses
+        # TODO: change this to install neovim from source (clone to ~/src)
+            # neovim \
     fi
 }
 
